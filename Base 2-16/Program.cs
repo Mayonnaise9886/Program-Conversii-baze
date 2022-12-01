@@ -4,6 +4,7 @@ namespace anybase
 {
     public class TemaOrosConversieBaze
     {
+        //conversie valori > 10 in litere
         static int val(char c)
         {
             if (c >= '0' && c <= '9')
@@ -11,6 +12,7 @@ namespace anybase
             else
                 return (int)c - 'A' + 10;
         }
+        //conversie numar din baza introdusa in baza 10
         static int toDeci(string str, int bazanr)
         {
             int len = str.Length;
@@ -21,6 +23,7 @@ namespace anybase
 
             for (int i = len - 1; i >= 0; i--)
             {
+                //check pt numar < baza sa
                 if (val(str[i]) >= bazanr)
                 {
                     Console.Write("Invalid Number");
@@ -42,6 +45,7 @@ namespace anybase
                 return (char)(num - 10 + 'A');
         }
 
+        //transformare nr din baza 10 in alta baza
         static string fromDeci(int bazanr, int inputNum)
         {
 
@@ -59,6 +63,7 @@ namespace anybase
             return res;
         }
 
+
         static void convertbazanr(string s, int a, int b)
         {
             int num = toDeci(s, a);
@@ -73,11 +78,7 @@ namespace anybase
             char[] a = input.ToCharArray();
             int l, r = a.Length - 1;
             for (l = 0; l < r; l++, r--)
-            {
-                char temp = a[l];
-                a[l] = a[r];
-                a[r] = temp;
-            }
+                (a[l], a[r]) = (a[r], a[l]);
             return new string(a);
         }
 
